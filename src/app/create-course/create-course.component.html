@@ -1,0 +1,30 @@
+<form #f="ngForm" (ngSubmit)="createCourse(f)">
+  <div class="form-group">
+    <label for="courseName">Course Name</label>
+    <input required maxlength='15' minlength="3" ngModel name="courseName" type="text" class="form-control">
+  </div>
+  <div class="alert alert-danger" *ngIf="f?.controls?.courseName?.errors && f?.controls?.courseName?.touched ">
+    <span *ngIf="f?.controls?.courseName?.errors?.required"> name is required</span>
+    <span *ngIf="f?.controls?.courseName?.errors.maxlength"> name is at least 15 charecter</span>
+    <span *ngIf="f?.controls?.courseName?.errors.minlength"> name is at least 3 charecter</span>
+  </div>
+  <div class="form-group">
+      <label for="courseName">Category</label>
+      <select required ngModel name="category"  class="form-control">
+          <option value=""></option>
+          <option *ngFor="let course of courses" [ngValue]="course.id" >{{course.courseType}}</option>
+      </select>
+  </div>
+  <div class="alert alert-danger" *ngIf="f?.controls?.category?.errors && f?.controls?.category?.touched ">
+      <span *ngIf="f?.controls?.category?.errors?.required"> category is required</span>
+    </div>
+  <div class="checkbox">
+    <label for="policy">
+      <input type="checkbox" class="form-control" ngModel name="policy">30 day money-back gaurantee</label>
+  </div>
+
+  {{f.value | json}}
+<div class="form-group">
+ <button class="btn btn-primary"  >Create</button>
+</div>
+</form>

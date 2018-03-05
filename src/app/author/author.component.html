@@ -1,0 +1,10 @@
+
+  <h2>Author list Componenet </h2>
+
+
+<ul>
+  <h3>{{authers.length > 1? authers.length + ' Authores' : authers.length + 'Auther' }}</h3>
+  <li *ngFor="let author of authers">
+      {{author}}
+  </li>
+</ul>
